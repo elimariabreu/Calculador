@@ -144,11 +144,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="coseno"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cosMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="tan">
       <Properties>
         <Property name="text" type="java.lang.String" value="tangente"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tanMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -83,8 +83,18 @@ public class Cascaron extends javax.swing.JFrame {
         });
 
         cos.setText("coseno");
+        cos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cosMouseClicked(evt);
+            }
+        });
 
         tan.setText("tangente");
+        tan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tanMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,10 +193,7 @@ public class Cascaron extends javax.swing.JFrame {
                 dato = miCalculadora.resultado;
                 display.setText(String.valueOf(dato));
                 break;
-            case 4:
-                miTrigonometrico.seno();
-                dato = miCalculadora.resultado;
-                display.setText(String.valueOf(dato));
+            
 
         }
 
@@ -231,6 +238,26 @@ public class Cascaron extends javax.swing.JFrame {
         display.setText(String.valueOf(dato));
         
     }//GEN-LAST:event_senMouseClicked
+
+    private void cosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cosMouseClicked
+        float dato;
+
+        dato = Float.valueOf(display.getText());
+        miTrigonometrico.operando1 = dato;
+        miTrigonometrico.coseno();
+        dato = miTrigonometrico.resultado;
+        
+        display.setText(String.valueOf(dato));
+    }//GEN-LAST:event_cosMouseClicked
+
+    private void tanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tanMouseClicked
+       float dato;
+        dato = Float.valueOf(display.getText());
+        miTrigonometrico.operando1 = dato;
+        miTrigonometrico.tangente();
+        dato = miTrigonometrico.resultado;
+        display.setText(String.valueOf(dato));
+    }//GEN-LAST:event_tanMouseClicked
 
     /**
      * @param args the command line arguments
