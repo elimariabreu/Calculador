@@ -11,8 +11,10 @@ package calculadora;
  */
 public class Cascaron extends javax.swing.JFrame {
 
-    Calculadora miCalculadora=new Calculadora();
+    Trigonometrico miTrigonometrico = new Trigonometrico();
+    Calculadora miCalculadora = new Calculadora();
     int u;
+
     public Cascaron() {
         initComponents();
     }
@@ -32,6 +34,9 @@ public class Cascaron extends javax.swing.JFrame {
         restar = new javax.swing.JButton();
         multi = new javax.swing.JButton();
         divi = new javax.swing.JButton();
+        sen = new javax.swing.JButton();
+        cos = new javax.swing.JButton();
+        tan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +75,17 @@ public class Cascaron extends javax.swing.JFrame {
             }
         });
 
+        sen.setText("seno");
+        sen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                senMouseClicked(evt);
+            }
+        });
+
+        cos.setText("coseno");
+
+        tan.setText("tangente");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,7 +98,6 @@ public class Cascaron extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(divi)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(restar)
@@ -91,7 +106,14 @@ public class Cascaron extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(sumar)
                                     .addGap(18, 18, 18)
-                                    .addComponent(igual))))))
+                                    .addComponent(igual)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(divi)
+                                .addGap(41, 41, 41)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cos)
+                                    .addComponent(sen)
+                                    .addComponent(tan))))))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -108,85 +130,107 @@ public class Cascaron extends javax.swing.JFrame {
                     .addComponent(restar)
                     .addComponent(multi))
                 .addGap(18, 18, 18)
-                .addComponent(divi)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(divi)
+                    .addComponent(sen))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tan)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void sumarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sumarMouseClicked
-          float dato;
-          u=0;
-        dato=Float.valueOf(display.getText());
-       miCalculadora.operando1=dato;
-       display.setText("");
-       
+        float dato;
+        u = 0;
+        dato = Float.valueOf(display.getText());
+        miCalculadora.operando1 = dato;
+        display.setText("");
+
     }//GEN-LAST:event_sumarMouseClicked
 
     private void igualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_igualMouseClicked
         float dato;
-        dato=Float.valueOf(display.getText());
-       miCalculadora.operando2=dato;
-       switch(u){
-           case 0:
-           
-          miCalculadora.sumar();
-       
-       dato=miCalculadora.resultado;
-       display.setText(String.valueOf(dato));
-       
-       break;
-           case 1:
+        dato = Float.valueOf(display.getText());
+        miCalculadora.operando2 = dato;
+        switch (u) {
+            case 0:
+
+                miCalculadora.sumar();
+
+                dato = miCalculadora.resultado;
+                display.setText(String.valueOf(dato));
+
+                break;
+            case 1:
                 miCalculadora.restar();
-       
-       dato=miCalculadora.resultado;
-       display.setText(String.valueOf(dato));
-       break;
-           case 2:
-                       miCalculadora.multiplicar();
-       
-       dato=miCalculadora.resultado;
-       display.setText(String.valueOf(dato));
-       break;
-           case 3:
-                       miCalculadora.dividir();
-       
-       dato=miCalculadora.resultado;
-       display.setText(String.valueOf(dato));
-       }
-    
-       
-       
-       
+
+                dato = miCalculadora.resultado;
+                display.setText(String.valueOf(dato));
+                break;
+            case 2:
+                miCalculadora.multiplicar();
+
+                dato = miCalculadora.resultado;
+                display.setText(String.valueOf(dato));
+                break;
+            case 3:
+                miCalculadora.dividir();
+
+                dato = miCalculadora.resultado;
+                display.setText(String.valueOf(dato));
+                break;
+            case 4:
+                miTrigonometrico.seno();
+                dato = miCalculadora.resultado;
+                display.setText(String.valueOf(dato));
+
+        }
+
+
     }//GEN-LAST:event_igualMouseClicked
 
     private void restarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restarMouseClicked
         float dato;
-        u=1;
-         dato=Float.valueOf(display.getText());
-       miCalculadora.operando1=dato;
-       display.setText("");
-        
+        u = 1;
+        dato = Float.valueOf(display.getText());
+        miCalculadora.operando1 = dato;
+        display.setText("");
+
     }//GEN-LAST:event_restarMouseClicked
 
     private void multiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_multiMouseClicked
-         float dato;
-        u=2;
-         dato=Float.valueOf(display.getText());
-       miCalculadora.operando1=dato;
-       display.setText("");
+        float dato;
+        u = 2;
+        dato = Float.valueOf(display.getText());
+        miCalculadora.operando1 = dato;
+        display.setText("");
         
-        
+
+
     }//GEN-LAST:event_multiMouseClicked
 
     private void diviMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_diviMouseClicked
-      float dato;
-        u=3;
-         dato=Float.valueOf(display.getText());
-       miCalculadora.operando1=dato;
-       display.setText("");
+        float dato;
+        u = 3;
+        dato = Float.valueOf(display.getText());
+        miCalculadora.operando1 = dato;
+        display.setText("");
     }//GEN-LAST:event_diviMouseClicked
+
+    private void senMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_senMouseClicked
+        float dato;
+
+        dato = Float.valueOf(display.getText());
+        miTrigonometrico.operando1 = dato;
+        miTrigonometrico.seno();
+        dato = miTrigonometrico.resultado;
+        display.setText(String.valueOf(dato));
+        
+    }//GEN-LAST:event_senMouseClicked
 
     /**
      * @param args the command line arguments
@@ -224,11 +268,14 @@ public class Cascaron extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cos;
     private javax.swing.JTextField display;
     private javax.swing.JButton divi;
     private javax.swing.JButton igual;
     private javax.swing.JButton multi;
     private javax.swing.JButton restar;
+    private javax.swing.JButton sen;
     private javax.swing.JButton sumar;
+    private javax.swing.JButton tan;
     // End of variables declaration//GEN-END:variables
 }
